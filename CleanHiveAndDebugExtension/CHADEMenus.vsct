@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+    <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+    <Extern href="stdidcmd.h"/>
+
+    <!--This header contains the command ids for the menus provided by the shell. -->
+    <Extern href="vsshlids.h"/>
+
+    <Extern href="VsDbgCmd.h"/>
+
+    <Extern href="VsDebugGuids.h"/>
+
+    <Commands package="guidCHADEPackage">
+        <Groups>
+            <Group guid="guidCHADECommands" id="CHADEMenuGroup" priority="0x0600">
+                <Parent guid="guidVSDebugGroup" id="IDM_DEBUG_MENU"/>
+            </Group>
+        </Groups>
+        <Buttons>
+            <Button guid="guidCHADECommands" id="cmdCleanExtensionCommand" type="Button" priority="0x0100">
+                <Parent guid="guidCHADECommands" id="CHADEMenuGroup"/>
+                <Icon guid="guidImages" id="bmpRunDebug"/>
+                <Strings>
+                    <ButtonText>Clean Hive and Debug</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+        <Bitmaps>
+            <Bitmap guid="guidImages" href="Resources/Images/CHADEImages.png" usedList="bmpRunDebug"/>
+        </Bitmaps>
+    </Commands>
+    <KeyBindings>
+        <KeyBinding guid="guidCHADECommands" id="cmdCleanExtensionCommand" key1="VK_F8" mod1="ALT" editor="guidVSStd97" />
+    </KeyBindings>
+    <Symbols>
+        <GuidSymbol name="guidCHADEPackage" value="{f0d5e59a-13e9-4f98-98e0-459b5e883e8b}" />
+        <GuidSymbol name="guidCHADECommands" value="{1467AD39-B4C7-47EC-8075-09AB259EB847}">
+            <IDSymbol name="CHADEMenuGroup" value="0x7A120" />
+            <IDSymbol name="cmdCleanExtensionCommand" value="0x7A121"/>
+        </GuidSymbol>
+        <GuidSymbol name="guidImages" value="{83D0DCDC-2098-4CD9-B0F7-51CF9A8F405F}">
+            <IDSymbol name="bmpRunDebug" value="1"/>
+        </GuidSymbol>
+    </Symbols>
+</CommandTable>
+
