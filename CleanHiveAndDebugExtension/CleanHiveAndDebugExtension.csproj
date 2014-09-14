@@ -152,7 +152,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\CHADEImages.png" />
-    <Resource Include="Resources\ChadePackage.ico" />
+    <Content Include="Gallery_display_image0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="Resources\ChadePackage.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="CHADEMenus.vsct">
