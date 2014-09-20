@@ -24,6 +24,18 @@
                     <ButtonText>Clean Hive and Debug</ButtonText>
                 </Strings>
             </Button>
+            <Button guid="guidCHADECommands" id="cmdEnableVSIPLoggingCommand" type="Button" priority="0x0100">
+                <Parent guid="guidCHADECommands" id="CHADEMenuGroup" />
+                <Strings>
+                    <ButtonText>Enable VSIP Logging</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidCHADECommands" id="cmdDisableVSIPLoggingCommand" type="Button" priority="0x0100">
+                <Parent guid="guidCHADECommands" id="CHADEMenuGroup" />
+                <Strings>
+                    <ButtonText>Disable VSIP Logging</ButtonText>
+                </Strings>
+            </Button>
         </Buttons>
         <Bitmaps>
             <Bitmap guid="guidImages" href="Resources/Images/CHADEImages.png" usedList="bmpRunDebug"/>
@@ -37,6 +49,8 @@
         <GuidSymbol name="guidCHADECommands" value="{1467AD39-B4C7-47EC-8075-09AB259EB847}">
             <IDSymbol name="CHADEMenuGroup" value="0x7A120" />
             <IDSymbol name="cmdCleanExtensionCommand" value="0x7A121"/>
+            <IDSymbol name="cmdEnableVSIPLoggingCommand" value="0x7A122"/>
+            <IDSymbol name="cmdDisableVSIPLoggingCommand" value="0x7A123"/>
         </GuidSymbol>
         <GuidSymbol name="guidImages" value="{83D0DCDC-2098-4CD9-B0F7-51CF9A8F405F}">
             <IDSymbol name="bmpRunDebug" value="1"/>
