@@ -4,8 +4,8 @@
         <Identity Id="f0d5e59a-13e9-4f98-98e0-459b5e883e8b" Version="1.0.1" Language="en-US" Publisher="John McBride" />
         <DisplayName>Clean Hive and Debug for Extension Developers</DisplayName>
         <Description xml:space="preserve">Visual Studio 2013 extension that enables extension developers to clean the experimental hive registry and directory before launching the extension in the experimental Visual Studio instance.</Description>
-        <Icon>ChadePackage.ico</Icon>
-        <PreviewImage>Gallery_display_image0.png</PreviewImage>
+        <Icon>Resources\ChadePackage.ico</Icon>
+        <PreviewImage>Resources\Images\Gallery_display_image0.png</PreviewImage>
     </Metadata>
     <Installation InstalledByMsi="false">
         <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0]" />

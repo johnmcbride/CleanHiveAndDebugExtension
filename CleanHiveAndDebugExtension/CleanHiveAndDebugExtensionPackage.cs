@@ -65,8 +65,15 @@ namespace Company.CleanHiveAndDebugExtension
             CommandID _cleanHiveCmd = new CommandID(Guid.Parse("{1467AD39-B4C7-47EC-8075-09AB259EB847}"), int.Parse("7A121",System.Globalization.NumberStyles.HexNumber));
 
             MenuCommand _clientHiveMenuItem = new MenuCommand(ExecuteCleanHiveAndDebug, _cleanHiveCmd);
-
             _menuService.AddCommand(_clientHiveMenuItem);
+
+            CommandID _enableVSIPLoggingCmd = new CommandID(Guid.Parse("{1467AD39-B4C7-47EC-8075-09AB259EB847}"), int.Parse("7A122", System.Globalization.NumberStyles.HexNumber));
+            MenuCommand _enableVSIPMenuItem = new MenuCommand(ExecuteEnableVSIPLogging,_enableVSIPLoggingCmd);
+            _menuService.AddCommand(_enableVSIPMenuItem);
+
+            CommandID _disbleVSIPLoggingCmd = new CommandID(Guid.Parse("{1467AD39-B4C7-47EC-8075-09AB259EB847}"), int.Parse("7A123", System.Globalization.NumberStyles.HexNumber));
+            MenuCommand _disableVSIPMenuItem = new MenuCommand(ExecuteDisableVSIPLogging, _disbleVSIPLoggingCmd);
+            _menuService.AddCommand(_disableVSIPMenuItem);
 
             //create the errorlist provider
             _errProvider = new ErrorListProvider(this);
@@ -140,6 +147,63 @@ namespace Company.CleanHiveAndDebugExtension
             EnvDTE.DTE _dte = ServiceProvider.GlobalProvider.GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
 
             _dte.ExecuteCommand("Debug.Start");
+        }
+
+        private void ExecuteEnableVSIPLogging(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Win32.RegistryKey _key = Microsoft.Win32.Registry.CurrentUser;
+                Microsoft.Win32.RegistryKey _vsKey = _key.OpenSubKey(@"Software\Microsoft\VisualStudio\12.0\General", true);
+
+                _vsKey.SetValue("EnableVSIPLogging", 1, RegistryValueKind.DWord);
+                _vsKey.Close();
+
+                //restart VS instance.
+                if ( System.Windows.Forms.MessageBox.Show("Would you like to restart Visual Studio to enable VSIP logging?","Enable VSIP Logging",System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes )
+                {
+                    //prompt the user to restart.
+                    //we need to add the same restart method that the extension manager employs when it has an update and
+                    //needs to restart
+                    System.Windows.Forms.MessageBox.Show("Please start Visual Studio to apply the VSIP changes.");
+                }
+            }
+            catch ( Exception registryError)
+            {
+                ErrorTask _registryEnableVSIPErrorTask = new ErrorTask();
+                _registryEnableVSIPErrorTask.Category = TaskCategory.BuildCompile;
+                _registryEnableVSIPErrorTask.ErrorCategory = TaskErrorCategory.Warning;
+                _registryEnableVSIPErrorTask.Text = "Unable to enable VSIP logging by setting the EnableVSIPLogging registry entry";
+                _errProvider.Tasks.Add(_registryEnableVSIPErrorTask);
+
+            }
+        }
+        private void ExecuteDisableVSIPLogging(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Win32.RegistryKey _key = Microsoft.Win32.Registry.CurrentUser;
+                Microsoft.Win32.RegistryKey _vsKey = _key.OpenSubKey(@"Software\Microsoft\VisualStudio\12.0\General", true);
+
+                _vsKey.SetValue("EnableVSIPLogging", 0, RegistryValueKind.DWord);
+                _vsKey.Close();
+
+                //restart VS instance.
+                if (System.Windows.Forms.MessageBox.Show("Would you like to restart Visual Studio to disable VSIP logging?", "Enable VSIP Logging", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    //we need to add the same restart method that the extension manager employs when it has an update and
+                    //needs to restart
+                    System.Windows.Forms.MessageBox.Show("Please start Visual Studio to apply the VSIP changes.");
+                }
+            }
+            catch ( Exception regError )
+            {
+                ErrorTask _registryEnableVSIPErrorTask = new ErrorTask();
+                _registryEnableVSIPErrorTask.Category = TaskCategory.BuildCompile;
+                _registryEnableVSIPErrorTask.ErrorCategory = TaskErrorCategory.Warning;
+                _registryEnableVSIPErrorTask.Text = "Unable to enable VSIP logging by setting the EnableVSIPLogging registry entry";
+                _errProvider.Tasks.Add(_registryEnableVSIPErrorTask);
+            }
         }
 
         internal void CleanDirectoryAndFiles(string Path)
