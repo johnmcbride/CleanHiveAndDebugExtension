@@ -19,7 +19,7 @@
         <Buttons>
             <Button guid="guidCHADECommands" id="cmdCleanExtensionCommand" type="Button" priority="0x0100">
                 <Parent guid="guidCHADECommands" id="CHADEMenuGroup"/>
-                <Icon guid="guidImages" id="bmpRunDebug"/>
+                <Icon guid="guidImages" id="pngRunDebug"/>
                 <Strings>
                     <ButtonText>Clean Hive and Debug</ButtonText>
                 </Strings>
@@ -38,7 +38,7 @@
             </Button>
         </Buttons>
         <Bitmaps>
-            <Bitmap guid="guidImages" href="Resources/Images/CHADEImages.png" usedList="bmpRunDebug"/>
+            <Bitmap guid="guidImages" href="Resources/Images/CHADE_Images.png" usedList="pngRunDebug,pngEnableVSIP,pngDisableVSIP"/>
         </Bitmaps>
     </Commands>
     <KeyBindings>
@@ -53,7 +53,10 @@
             <IDSymbol name="cmdDisableVSIPLoggingCommand" value="0x7A123"/>
         </GuidSymbol>
         <GuidSymbol name="guidImages" value="{83D0DCDC-2098-4CD9-B0F7-51CF9A8F405F}">
-            <IDSymbol name="bmpRunDebug" value="1"/>
+            <IDSymbol name="pngRunDebug" value="4"/>
+            <IDSymbol name="pngEnableVSIP" value="2"/>
+            <IDSymbol name="pngDisableVSIP" value="3"/>
+            <IDSymbol name="pngExtensionIcon" value="1"/>
         </GuidSymbol>
     </Symbols>
 </CommandTable>
