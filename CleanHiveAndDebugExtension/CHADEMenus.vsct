@@ -26,12 +26,14 @@
             </Button>
             <Button guid="guidCHADECommands" id="cmdEnableVSIPLoggingCommand" type="Button" priority="0x0100">
                 <Parent guid="guidCHADECommands" id="CHADEMenuGroup" />
+                <Icon guid="guidImages" id="pngEnableVSIP"/>
                 <Strings>
                     <ButtonText>Enable VSIP Logging</ButtonText>
                 </Strings>
             </Button>
             <Button guid="guidCHADECommands" id="cmdDisableVSIPLoggingCommand" type="Button" priority="0x0100">
                 <Parent guid="guidCHADECommands" id="CHADEMenuGroup" />
+                <Icon guid="guidImages" id="pngDisableVSIP" />
                 <Strings>
                     <ButtonText>Disable VSIP Logging</ButtonText>
                 </Strings>
@@ -53,10 +55,9 @@
             <IDSymbol name="cmdDisableVSIPLoggingCommand" value="0x7A123"/>
         </GuidSymbol>
         <GuidSymbol name="guidImages" value="{83D0DCDC-2098-4CD9-B0F7-51CF9A8F405F}">
-            <IDSymbol name="pngRunDebug" value="4"/>
+            <IDSymbol name="pngRunDebug" value="1"/>
             <IDSymbol name="pngEnableVSIP" value="2"/>
             <IDSymbol name="pngDisableVSIP" value="3"/>
-            <IDSymbol name="pngExtensionIcon" value="1"/>
         </GuidSymbol>
     </Symbols>
 </CommandTable>
